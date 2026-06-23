@@ -3,6 +3,8 @@
 #  国内网络连不上会卡死，RPC 永远起不来。）
 FROM alpine:3.20
 
+ARG APK_REPOSITORY=https://mirrors.tuna.tsinghua.edu.cn/alpine
+RUN printf '%s/v3.20/main\n%s/v3.20/community\n' "$APK_REPOSITORY" "$APK_REPOSITORY" > /etc/apk/repositories
 RUN apk add --no-cache aria2
 
 EXPOSE 6800
